@@ -1,1 +1,2 @@
 # AutoCloneMachine
+SynologyNASにてGitHubからクローンするPythonとShell
