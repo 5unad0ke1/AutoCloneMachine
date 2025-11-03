@@ -1,0 +1,1 @@
+winpty python "/c/Users/yucch/Downloads/AutoCloneMachine/main.py"
