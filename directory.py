@@ -24,13 +24,12 @@ class DirectoryAPI:
         
         print("Current Directries")
         for dir in dirs:
-            print(dir)     # 現在のディレクトリ
+            print(dir)
         
         print()
         
         if len(dirs) > DirectoryAPI.max_directory:
-            # keep the newest max_directory directories, remove older ones
-            dirs_sorted = sorted(dirs)  # expects YYYYMMDD-style names
+            dirs_sorted = sorted(dirs)
             remove_count = len(dirs_sorted) - DirectoryAPI.max_directory
             to_remove = dirs_sorted[:remove_count]
             for d in to_remove:
