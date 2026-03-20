@@ -5,7 +5,8 @@ import shutil
 class DirectoryAPI:
 
     max_directory = 5
-
+    
+    @staticmethod
     def get_directory_today(from_path):
 
         today = datetime.today().strftime("%Y%m%d")
@@ -14,6 +15,7 @@ class DirectoryAPI:
         os.makedirs(path, exist_ok=True)
         return path
     
+    @staticmethod
     def delete_old_directory(from_path):
         dirs = [
             name for name in os.listdir(from_path)

@@ -3,6 +3,7 @@ import os
 from webhook import WebhookAPI
 
 class GitAPI:
+    @staticmethod
     def git_clone_or_pull(repo_url, local_dir):
         git_dir = os.path.join(local_dir,".git")
         isClone = False
