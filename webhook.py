@@ -1,9 +1,13 @@
+import os
 import requests
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class WebhookAPI:
 
-    WEBHOOK_URL = "https://discord.com/api/webhooks/1433807224970412172/LPO-ysGm6-oYaXCXP5wRAyIcML1mLLvgV9Ezn2PSR0kjjL2O8T5gnYwwpFjJS1ed7o3a"
-    AVATAR_URL = "https://cdn.discordapp.com/attachments/1414959083542286341/1433809515580751942/easy-peasy_7qpGEDcJol.png?ex=69060aab&is=6904b92b&hm=6a132bd11250883cc4d3f3c9919cea2e2dcef6da87b3a21d6cd2f10f997fa04e&"
+    WEBHOOK_URL = os.getenv("WEBHOOK_URL")
+    AVATAR_URL = os.getenv("AVATAR_URL")
 
     @staticmethod
     def send_message(message: str):

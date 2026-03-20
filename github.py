@@ -1,14 +1,13 @@
+import os
 import requests
 
 class GitHubAPI:
+    TOKEN = os.getenv("TOKEN")
+    USER_NAME = os.getenv("USER_NAME")
 
-    USER_NAME = "5unad0ke1"
-    TOKEN = "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"
-    
     @staticmethod
     def get_github_repos():
-        TOKEN = GitHubAPI.TOKEN
-        headers = {"Authorization": f"token {TOKEN}"}
+        headers = {"Authorization": f"token {GitHubAPI.TOKEN}"}
 
         repos = []
         page = 1

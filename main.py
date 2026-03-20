@@ -1,12 +1,15 @@
 import os
 import sys
+from dotenv import load_dotenv
+load_dotenv()
 from github import GitHubAPI
 from git import GitAPI
 from webhook import WebhookAPI
 from directory import DirectoryAPI
 
-LOCAL_DIR = "C:/Users/yucch/Downloads/TestRepo"
- 
+
+LOCAL_DIR = os.getenv("LOCAL_DIR")
+
 print("Start")
 try:
     repos = GitHubAPI.get_github_repos()
