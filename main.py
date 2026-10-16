@@ -23,7 +23,7 @@ except Exception as e:
     sys.exit(1)
 
 for repo in repos:
-    URL = repo["clone_url"].replace("https://", f"https://{GitHubAPI.TOKEN}@")
+    URL = repo["clone_url"]
 
     DIR = os.path.join(path, repo["name"])
 
