@@ -34,10 +34,11 @@ for repo in repos:
         failed.append(f"{repo['name']}: {e}")
 print()
 
-DirectoryAPI.delete_old_directory(LOCAL_DIR)
-
 if failed:
+    # 同期に失敗した日は過去の正常な世代を残すため、古いディレクトリを削除しない
     WebhookAPI.send_message("03 Gitに異常が出ました。いったい何が？\n" + "\n".join(failed))
     sys.exit(1)
+
+DirectoryAPI.delete_old_directory(LOCAL_DIR)
 
 WebhookAPI.send_message("Clone & Pull & Clear 完了")
