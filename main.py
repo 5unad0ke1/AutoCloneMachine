@@ -22,17 +22,22 @@ except Exception as e:
     WebhookAPI.send_message(f"02 ディレクトリ操作に問題が発生しました。権限に異常が出ているかもしれません\n{e}")
     sys.exit(1)
 
+failed = []
 for repo in repos:
-    URL = repo["clone_url"].replace("https://", f"https://{GitHubAPI.TOKEN}@")
+    URL = repo["clone_url"]
 
     DIR = os.path.join(path, repo["name"])
 
     try:
         GitAPI.git_clone_or_pull(URL, DIR)
     except Exception as e:
-        WebhookAPI.send_message(f"03 Gitに異常が出ました。いったい何が？\n{e}")
-        sys.exit(1)
+        failed.append(f"{repo['name']}: {e}")
 print()
+
+if failed:
+    # 同期に失敗した日は過去の正常な世代を残すため、古いディレクトリを削除しない
+    WebhookAPI.send_message("03 Gitに異常が出ました。いったい何が？\n" + "\n".join(failed))
+    sys.exit(1)
 
 DirectoryAPI.delete_old_directory(LOCAL_DIR)
 
